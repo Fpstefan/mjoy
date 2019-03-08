@@ -6,4 +6,4 @@ Subset of the Programming Language Joy with Turtle Graphics
 
 ---> Dokumentation.pdf\
 ---> Referenz.pdf\
----> mjoy-in-delphi/GetIt.txt ... (for downloading Installer)\
+---> mjoy-in-delphi/GetIt.txt ... (for downloading Installer)
