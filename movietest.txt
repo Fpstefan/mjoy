@@ -1,0 +1,4 @@
+0 loop
+
+loop == [init 200 -200 moveto 2 index neg 2 / rad turnto 4 [100 move 90 rad turn] times 
+2 index rad turnto 255 pencolor 150 move 30 circle draw] [1 + loop] '!

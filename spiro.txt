@@ -1,0 +1,4 @@
+init penup 400 -400 moveto pendown 300 spiro draw
+
+spiro (dict len -- dict) == dup [swap 2 index quadrat 2pi 100 / turn swap 1 -] times pop
+quadrat (dict len -- dict) == swap 4 [2 index move 2pi 0.25 * turn] times swap pop

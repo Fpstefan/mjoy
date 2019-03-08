@@ -1,0 +1,3 @@
+start colors 'gold get pencolor 5 pensize strahlen 160 circle draw
+
+strahlen == 36 [200 move -200 move 10 rad turn] times

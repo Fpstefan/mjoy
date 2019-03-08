@@ -1,0 +1,28 @@
+init penup 200 -200 moveto pendown 89 3 3 100 polyspi draw
+
+polyspi90 == 90 5 5 100 polyspi
+
+polyspi95 == 95 1 5 100 polyspi
+
+polyspi117 == 117 3 5 100 polyspi
+
+krake == 50 2 20 1000 inspi
+
+init penup 200 -200 moveto pendown 50 2 20 1000 inspi draw
+
+polyspi (dict angle inc side count) ==
+	dup 0 >
+	[ 5 index 3 index move
+	  5 index neg rad turn
+	  5 index 5 index 5 index 7 index + 5 index 1 - polyspi ]
+	[ 5 index ] if
+	[pop pop pop pop pop] dip
+
+inspi (dict side angle inc count) ==
+	5 index 5 index move
+	4 index neg rad turn
+	2 index 0 >
+	[ 5 index 5 index 5 index + 5 index 5 index 1 - inspi]
+	[] if
+	[5 [pop] times] dip
+	

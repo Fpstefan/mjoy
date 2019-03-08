@@ -1,0 +1,6 @@
+0 loop
+
+loop == [init penup 420 -420 moveto pendown 2 index 0.02 * cos 1 + 160 * spiro draw] [1 + loop] '!
+
+spiro (dict len -- dict) == dup [swap 2 index quadrat 2pi 100 / turn swap 1 -] times pop
+quadrat (dict len -- dict) == swap 4 [2 index move 2pi 0.25 * turn] times swap pop

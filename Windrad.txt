@@ -1,0 +1,17 @@
+0 loop
+
+loop == [init 
+	200 -200 starte rumpf 2 index dreherad 
+	400 -400 starte rumpf 2 index 45 + dreherad
+	50 -420 starte rumpf 2 index 90 + dreherad
+	70 -300 starte rumpf 2 index dreherad 
+	450 -400 starte rumpf 2 index 45 + dreherad
+	300 -420 starte rumpf 2 index 90 + dreherad
+	500 -500 starte rumpf 2 index dreherad 	
+draw] [1 + loop] '!
+
+rumpf == 3 pensize colors 'gray get pencolor 90 rad turnto 100 move 1 pensize
+
+dreherad == rad turnto colors 'red get pencolor 3 [50 move -50 move 360 3 / rad turn] times
+
+starte == rolldown penup 90 rad turnto rollup moveto pendown

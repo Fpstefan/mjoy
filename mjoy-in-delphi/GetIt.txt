@@ -1,0 +1,8 @@
+Wenn Sie auf die Dateien in diesem Verzeichnis zugreifen möchten,
+können Sie dieses durch einen Download erreichen, zu finden unter
+dem Link: https://www.heise.de/download/product/mjoy
+
+Sie finden dort die gesamten Quelltextdateien in Delphi (Object Pascal)
+die mit Embarcadero Delphi compiliert werden können.
+Eine Embarcadero Delphi Community Edition ist kostenlos zu erwerben
+bei: https://www.embarcadero.com/products/delphi/starter

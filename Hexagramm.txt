@@ -1,0 +1,4 @@
+start penup -100 move pendown mehrhexa draw
+mehrhexa == 3 [penup 160 move pendown 3hexa -120 rad turn] times
+3hexa == 3 [hexagon 120 rad turn] times
+hexagon == 6 [50 move 60 rad turn] times
