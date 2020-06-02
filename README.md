@@ -9,4 +9,5 @@ Subset of the Programming Language Joy with Turtle Graphics
 ---> [Dokumentation.pdf](https://github.com/Fpstefan/mjoy/blob/master/Dokumentation.pdf)\
 ---> [Referenz.pdf](https://github.com/Fpstefan/mjoy/blob/master/Referenz.pdf)\
 ---> [QuickStartGuide.pdf](https://github.com/Fpstefan/mjoy/blob/master/QuickStartGuide.pdf)\
----> mjoy-in-delphi/GetIt.txt ... (for downloading Installer)
+---> [Get-It](https://www.heise.de/download/product/mjoy) ... (for Downloading Installer)
+
