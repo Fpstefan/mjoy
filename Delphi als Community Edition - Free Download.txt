@@ -1,0 +1,13 @@
+Delphi und C++ Builder als Community Edition:
+Artikel bei heise.de:
+https://www.heise.de/developer/meldung/Embarcadero-konfektioniert-Delphi-und-C-Builder-als-Community-Edition-4115563.html
+https://www.heise.de/download/product/delphi-community-edition
+
+Free-Download bei embarcadero.com:
+https://www.embarcadero.com/de/products/delphi/starter
+Derzeit (19.07.2018) wird Delphi bei Idera/Embarcadero kostenlos zum Download angeboten. 
+Wenn Sie interesse haben das mjoy-Programm in Delphi zu öffen/editieren/compilieren, 
+haben Sie unter dem vorherigen Link die Möglichkeit Delphi herunterzuladen.
+
+Wichtig für Anfänger: diesen Ordner auf den Desktop oder Bibliotheken\Dokumente 
+ziehen und dann erst mit Delphi compilieren!
