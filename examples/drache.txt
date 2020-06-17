@@ -1,0 +1,15 @@
+init penup 20 -200 moveto pendown colors 'red dictget pencolor 4 400 drache draw
+
+drache (dict level len -- dict) ==
+   2 index 0 =
+   [swap pop move]
+   [ swap 1 - swap 3 / swap rotate (level len dict)
+     3 index 3 index drache
+     2pi 6 / turn
+     3 index 3 index drache
+     2pi -3 / turn
+     3 index 3 index drache
+     2pi 6 / turn
+     3 index 3 index drache
+     rotate pop pop
+   ] if

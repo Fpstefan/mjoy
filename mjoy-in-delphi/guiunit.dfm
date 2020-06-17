@@ -1809,7 +1809,7 @@ object mjform: Tmjform
         Left = 0
         Top = 108
         Width = 628
-        Height = 10
+        Height = 7
         Cursor = crVSplit
         Align = alTop
       end
@@ -2947,9 +2947,9 @@ object mjform: Tmjform
       end
       object iomemo: TMemo
         Left = 0
-        Top = 118
+        Top = 115
         Width = 628
-        Height = 603
+        Height = 606
         Align = alClient
         BorderStyle = bsNone
         Font.Charset = ANSI_CHARSET
@@ -2964,6 +2964,8 @@ object mjform: Tmjform
         ScrollBars = ssVertical
         TabOrder = 1
         OnKeyPress = iomemoKeyPress
+        ExplicitTop = 118
+        ExplicitHeight = 603
       end
       object adpanel: TPanel
         Left = 0
@@ -3136,7 +3138,8 @@ object mjform: Tmjform
     end
   end
   object savememodialog: TSaveDialog
-    Filter = 'Alle Dateien (*.*)|*.*|Textdatei (*.txt)|*.txt'
+    DefaultExt = 'txt'
+    Filter = 'Textdatei (*.txt)|*.txt|Alle Dateien (*.*)|*.*'
     Title = 'Memo speichern unter'
     Left = 409
     Top = 656
@@ -3152,7 +3155,7 @@ object mjform: Tmjform
     Left = 328
     Top = 655
     Bitmap = {
-      494C01011800B800140210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011800B800180210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

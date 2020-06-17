@@ -13,7 +13,7 @@ uses System.SysUtils,//exception
 const servmaxcelldef=300000;
       servmincell  = 100000;//bitte passend einstellen
       prompt='      ';
-      guiformheightsub=146;
+      guiformheightsub=143;
 
 const xnil = 0;//vmunit           //clWebGold = $00D7FF; clWebOrange = $00A5FF;
 

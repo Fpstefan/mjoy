@@ -1,0 +1,22 @@
+( cs
+
+repeat 5 [
+make "r1count 1
+setxy 250 250
+repeat 20 [
+repeat 45 [forward :r1count right 8]
+penup
+back :r1count
+pendown
+make "r1count :r1count + 1
+]
+right 72
+] 
+
+
+rad == pi * 180 / )
+
+init flower draw
+
+flower == 5 [1 swap penup 250 -250 moveto pendown 20 [45 [2 index  move -8 rad turn] times 
+	penup 2 index neg move pendown swap 1  + swap] times -72 rad turn swap pop] times

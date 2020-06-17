@@ -1,0 +1,9 @@
+init penup 200 -100 moveto pendown 7 pensize farben igel draw
+
+farben == [black red gold green aqua darkgray fuchsia yellow lime lightgray maroon 
+          navy orange teal olive purple silver blue gold green aqua gray]
+
+igel (dict list) == dup size rotate 3 index [2 index first colors swap dictget 
+  pencolor stachel 3 index -360 swap / rad turn swap rest swap] times rotate pop pop
+
+stachel == 75 rad turn 50 move -150 rad turn 50 move 75 rad turn
