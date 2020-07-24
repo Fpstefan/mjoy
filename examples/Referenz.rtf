@@ -1,6 +1,6 @@
 {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
 {\colortbl ;\red247\green150\blue70;\red75\green172\blue198;}
-{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\lang7\b\f0\fs28 Referenz f\'fcr mjoy\cf0\b0\fs22\line\fs24 vom  2017-11-18\fs22\par
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\lang7\b\f0\fs28 Referenz f\'fcr mjoy\cf0\b0\fs22\line\fs24 vom  2020-07-24\fs22\par
 \par
 \cf1\b\fs28 Definition von Bezeichnern\cf2\par
 \cf0\b0\i\fs24 bezeichner1\i0  \b ==\b0  \i wort1 wort2 wort3 ...\i0\line\i bezeichner2\i0  \b ==\b0  \i wort4 wort5 wort6 ...\line\par
@@ -84,6 +84,7 @@ num1\i0  \b sqrt\b0\tab\tab --\tab\i num\line num\i0  ist die Quadratwurzel von 
 \i bool\i0  \b not\b0\tab\tab --\tab\i bool\line\i0 Logische Negation f\'fcr Wahrheitswerte.\par
 \i bool1 bool2\i0  \b and\b0\tab --\tab\i bool\line\i0 Logische Konjunktion f\'fcr Wahrheitswerte.\par
 \i bool1 bool2\i0  \b or\b0\tab\tab --\tab\i bool\line\i0 Logische Disjunktion f\'fcr Wahrheitswerte.\par
+\i bool1\i0  \i bool\i0 2 \b xor\b0\tab --\tab\i bool\i0\line Exklusiv-Oder-Verkn\'fcpfung f\'fcr Wahrheitswerte.\par
 \i wert1 wert2\i0    \b =\b0\tab\tab --\tab\i bool\line charliste1 charliste2  \i0  \b =\tab\b0 --\tab\i bool\line\i0 Pr\'fcft, ob \i wert1\i0  gleich \i wert2\i0  ist, und legt den Wahrheitswert auf den Stapel.\par
 \i wert1 wert2\i0  \b <>\b0\tab\i --\tab bool\par
 wert1 wert2\i0  \b !=\b0\tab --\tab bool\i\par
@@ -94,6 +95,11 @@ wert1 wert2\i0  \b >=\b0\tab --\tab\i bool\i0\par
 \i wert\i0  \b null\b0\tab\tab --\tab\i bool\i0\par
 \i wert\i0  \b list\b0\tab\tab --\tab\i bool\par
 wert\i0  \b logical\b0\tab\tab --\tab\i bool\par
+wert\i0  \b consp\b0\tab\tab --\tab\i bool\par
+wert\i0  \b ident\b0\tab\tab --\tab\i bool\par
+wert\i0  \b float\b0\tab\tab --\tab\i bool\par
+wert\i0  \b char\b0\tab\tab --\tab\i bool\par
+wert\i0  \b undef\b0\tab\tab --\tab\i bool\par
 wert\i0  \b type 'null =\b0\tab --\tab\i bool\line wert\i0  \b type 'cons =\b0\tab --\tab\i bool\line wert\i0  \b type 'ident =\b0\tab --\tab\i bool\line wert\i0  \b type 'float =\b0\tab --\tab\i bool\line wert\i0  \b type 'char =\b0\tab --\tab\i bool\line wert\i0   \b 'undef   =\b0\tab --\tab\i bool\par
 wert liste\i0  \b in\b0\tab\tab --\tab\i bool\par
 \i0\par
@@ -157,6 +163,6 @@ charliste\i0  \b parse\b0\tab\tab --\tab\i liste\i0\line Wandelt die Stringdarst
 \par
 \par
 \par
-(c) 2016.08, 2016.09 - 2017.11 - fpstefan.de\par
+(c) 2016.08, 2016.09 - 2020.07- Fpstefan\par
 }
  

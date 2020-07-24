@@ -45,5 +45,5 @@ winkel == start mittel laufe mittel neg laufe swap drehe mittel laufe mittel neg
 (; == dup ---(to copy the last drawing--- dup 'pen dictget [turtle] [] if draw)
 (turtle == 1 pensize red pencolor 120 rad turn 12 move 210 rad turn 20 move -120 rad turn 
 	   20 move 210 rad turn 11 move)
-red == 255
-black == 0
+(red == 255)
+(black == 0)
