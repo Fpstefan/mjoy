@@ -496,4 +496,4 @@ begin finalvm;
       //
 end;
 
-end. // (c) 2016.08 - 2017 Stefan Cygon
+end. // (c) 2016.08 - 2020.07 Fpstefan

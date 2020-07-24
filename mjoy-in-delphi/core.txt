@@ -14,8 +14,8 @@ clear == [] unstack
 pair == [] cons cons
 unpair == uncons uncons pop
 
-swons == swap cons
-unswons == uncons swap
+(swons == swap cons)
+(unswons == uncons swap)
 swoncat == swap concat
 (rolldown == [swap] dip swap)
 (rollup   == swap [swap] dip)
@@ -25,7 +25,7 @@ swoncat == swap concat
 (not == [false] [true] if)
 (and == [] [pop false] if)
 (or == [pop true] [] if)
-xor ==
+(xor ==)
 <> == = not
 != == = not
 > == swap <

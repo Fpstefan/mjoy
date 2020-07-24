@@ -585,4 +585,4 @@ begin toolpanel.visible:=not(toolpanel.visible);
       toolitem.checked:=toolpanel.visible
 end;
 
-end. // (c) 2016.08 - 2018.07 Stefan Cygon
+end. // (c) 2016.08 - 2020.07 Fpstefan

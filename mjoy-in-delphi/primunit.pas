@@ -37,6 +37,10 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       econstypenolist = 'cons > typenolist > "Typ ist keine Liste."';
       eunconsstacknull = 'uncons > stacknull > '+estacknull;
       eunconstypenocons = 'uncons > typenocons > "Typ ist keine Cons-Zelle."';
+      eswonsstacknull = 'swons > stacknull > '+estacknull;
+      eswonstypenolist = 'swons > typenolist > "Typ ist keine Liste."';
+      eunswonsstacknull = 'unswons > stacknull > '+estacknull;
+      eunswonstypenocons = 'unswons > typenocons > "Typ ist keine Cons-Zelle."';
       //
       eaddstacknull = '+ > stacknull > '+estacknull;
       eaddtypenofloat = '+ > typenofloat > '+etypenofloat;
@@ -75,14 +79,16 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       eandtypenobool = 'and > typenobool > "Typ ist kein logischer Wert."';
       eorstacknull = 'or > stacknull > '+estacknull;
       eortypenobool = 'or > typenobool > "Typ ist kein logischer Wert."';
+      exorstacknull = 'xor > stacknull > '+estacknull;
+      exortypenobool = 'xor > typenobool > "Typ ist kein logischer Wert."';
       enullstacknull='null > stacknull > '+estacknull;
       eliststacknull='list > stacknull > '+estacknull;
       elogicalstacknull='logical > stacknull > '+estacknull;
-      //econspstacknull='consp > stacknull > '+estacknull;
-      //eidentstacknull='ident > stacknull > '+estacknull;
-      //efloatstacknull='float > stacknull > '+estacknull;
-      //echarstacknull='char > stacknull > '+estacknull;
-      //eundefstacknull='undef > stacknull > '+estacknull;
+      econspstacknull='consp > stacknull > '+estacknull;
+      eidentstacknull='ident > stacknull > '+estacknull;
+      efloatstacknull='float > stacknull > '+estacknull;
+      echarstacknull='char > stacknull > '+estacknull;
+      eundefstacknull='undef > stacknull > '+estacknull;
       enamestacknull='name > stacknull > '+estacknull;
       enametypenoident='name > typenoident > "Typ ist kein Ident."';
       ebodystacknull='body > stacknull > '+estacknull;
@@ -286,12 +292,34 @@ begin if (stack=xnil) then raise exception.create(econsstacknull);
       //
 end;
 
+procedure fswons;
+begin if (stack=xnil) then raise exception.create(eswonsstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(eswonsstacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if ((typeof[y]=xcons) or (y=xnil)) then stack:=cons(cons(x,y),stack)
+      else raise exception.create(eswonstypenolist);
+      x:=xnil;
+      y:=xnil
+end;
+
 procedure funcons;
 begin if (stack=xnil) then raise exception.create(eunconsstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       if (typeof[x]<>xcons) then raise exception.create(eunconstypenocons);
       stack:=cons(cell[x].decr,cons(cell[x].addr,stack));
+      x:=xnil
+end;
+
+procedure funswons;
+begin if (stack=xnil) then raise exception.create(eunswonsstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xcons) then raise exception.create(eunswonstypenocons);
+      stack:=cons(cell[x].addr,cons(cell[x].decr,stack));
       x:=xnil
 end;
 
@@ -593,6 +621,28 @@ begin if (stack=xnil) then raise exception.create(eorstacknull);
       y:=xnil
 end;
 
+procedure fxor;
+begin if (stack=xnil) then raise exception.create(exorstacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(exorstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if      (x=idtrue)  then begin
+         if      (y=idtrue)  then stack:=cons(idfalse,stack)
+         else if (y=idfalse) then stack:=cons(idtrue,stack)
+         else raise exception.create(exortypenobool)
+      end
+      else if (x=idfalse) then begin
+         if      (y=idtrue)  then stack:=cons(idtrue,stack)
+         else if (y=idfalse) then stack:=cons(idfalse,stack)
+         else raise exception.create(exortypenobool)
+      end
+      else raise exception.create(exortypenobool);
+      x:=xnil;
+      y:=xnil
+end;
+
 procedure fnull;
 begin if (stack=xnil) then raise exception.create(enullstacknull);
       x:=cell[stack].addr;
@@ -622,50 +672,50 @@ begin if (stack=xnil) then raise exception.create(elogicalstacknull);
       x:=xnil
 end;
 
-{procedure fconsp;
+procedure fconsp;
 begin if (stack=xnil) then raise exception.create(econspstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       if (typeof[x]=xcons) then stack:=cons(idtrue,stack)
                            else stack:=cons(idfalse,stack);
       x:=xnil
-end;}
+end;
 
-{procedure fident;
+procedure fident;
 begin if (stack=xnil) then raise exception.create(eidentstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       if (typeof[x]=xident) then stack:=cons(idtrue,stack)
                             else stack:=cons(idfalse,stack);
       x:=xnil
-end;}
+end;
 
-{procedure ffloat;
+procedure ffloat;
 begin if (stack=xnil) then raise exception.create(efloatstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       if (typeof[x]=xfloat) then stack:=cons(idtrue,stack)
                             else stack:=cons(idfalse,stack);
       x:=xnil
-end;}
+end;
 
-{procedure fchar;
+procedure fchar;
 begin if (stack=xnil) then raise exception.create(echarstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       if (typeof[x]=xchar) then stack:=cons(idtrue,stack)
                            else stack:=cons(idfalse,stack);
       x:=xnil
-end;}
+end;
 
-{procedure fundef;
+procedure fundef;
 begin if (stack=xnil) then raise exception.create(eundefstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       if (x=idundef) then stack:=cons(idtrue,stack)
                      else stack:=cons(idfalse,stack);
       x:=xnil
-end;}
+end;
 
 procedure ftype;
 begin if (stack=xnil) then raise exception.create(etypestacknull);
@@ -1458,9 +1508,10 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('first',ffirst);
       newidentproc('rest',frest);
       idcons:=newidentproc('cons',fcons);
-      //swons
       newidentproc('uncons',funcons);//uncons
-      //unswons
+      newidentproc('swons',fswons);
+      newidentproc('unswons',funswons);
+      //
       newidentproc('+',fadd);
       newidentproc('-',fsub);
       newidentproc('*',fmul);
@@ -1482,7 +1533,7 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('not',fnot);//not
       newidentproc('and',fand);//and
       newidentproc('or',f_or);//or
-      //newidentproc('xor',fxor);//xor
+      newidentproc('xor',fxor);//xor
       //
       idnull:=newidentproc('null',fnull);       //proc ...
       newidentproc('list',flist);
@@ -1490,13 +1541,13 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       //idnull:=newidentproc('null',fnull)
       //idcons:=newidentproc('cons',);
       //consp
-      //newidentproc('consp',fconsp);
-      idident:=newident('ident',xnil);//fident);
+      newidentproc('consp',fconsp);
+      idident:=newidentproc('ident',fident);
       idinteger:=newident('integer',xnil);
-      idfloat:=newident('float',xnil);//ffloat);
-      idchar:=newident('char',xnil);//fchar);
+      idfloat:=newidentproc('float',ffloat);
+      idchar:=newidentproc('char',fchar);
       idstring:=newident('string',xnil);
-      idundef:=newident('undef',xnil);//fundef);
+      idundef:=newidentproc('undef',fundef);
       //charseq
       newidentproc('type',ftype);
       newidentproc('name',fname);//name
@@ -1591,4 +1642,4 @@ begin for i:=0 to maxproc do proc[i]:=fundef;
       ;
 end;}
 
-end. // (c) 2016.08,2016.09 - 2017 Stefan Cygon
+end. // (c) 2016.08,2016.09 - 2020.07 Fpstefan
