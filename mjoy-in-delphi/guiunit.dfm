@@ -1798,18 +1798,19 @@ object mjform: Tmjform
       TabOrder = 1
       object mjpaintbox: TPaintBox
         Left = 0
-        Top = 48
+        Top = 41
         Width = 628
         Height = 60
         Align = alTop
         OnPaint = mjpaintboxPaint
+        ExplicitTop = 48
         ExplicitWidth = 524
       end
       object mjsplitter: TSplitter
         Left = 0
-        Top = 108
+        Top = 101
         Width = 628
-        Height = 7
+        Height = 6
         Cursor = crVSplit
         Align = alTop
       end
@@ -1817,14 +1818,14 @@ object mjform: Tmjform
         Left = 0
         Top = 0
         Width = 628
-        Height = 48
+        Height = 41
         Align = alTop
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
         object doitbutton: TSpeedButton
           Left = 0
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Doit'
@@ -1938,7 +1939,7 @@ object mjform: Tmjform
         end
         object pstackbutton: TSpeedButton
           Left = 40
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'stack reverse print'
@@ -2048,7 +2049,7 @@ object mjform: Tmjform
         end
         object dumpbutton: TSpeedButton
           Left = 80
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Dump'
@@ -2158,13 +2159,13 @@ object mjform: Tmjform
         end
         object Bevel1: TBevel
           Left = 127
-          Top = 4
+          Top = 2
           Width = 2
-          Height = 41
+          Height = 37
         end
         object openbutton: TSpeedButton
           Left = 135
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Script '#246'ffnen ...'
@@ -2274,7 +2275,7 @@ object mjform: Tmjform
         end
         object openlastbutton: TSpeedButton
           Left = 176
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Letztes Script '#246'ffnen'
@@ -2384,13 +2385,13 @@ object mjform: Tmjform
         end
         object Bevel2: TBevel
           Left = 223
-          Top = 4
+          Top = 2
           Width = 2
-          Height = 41
+          Height = 37
         end
         object cutbutton: TSpeedButton
           Left = 231
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Ausschneiden'
@@ -2500,7 +2501,7 @@ object mjform: Tmjform
         end
         object copybutton: TSpeedButton
           Left = 272
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Kopieren'
@@ -2610,7 +2611,7 @@ object mjform: Tmjform
         end
         object pastebutton: TSpeedButton
           Left = 312
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Einf'#252'gen'
@@ -2720,13 +2721,13 @@ object mjform: Tmjform
         end
         object Bevel3: TBevel
           Left = 359
-          Top = 4
+          Top = 2
           Width = 2
-          Height = 41
+          Height = 37
         end
         object favorbutton: TSpeedButton
           Left = 367
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Toggle Graphic'
@@ -2836,7 +2837,7 @@ object mjform: Tmjform
         end
         object helpbutton: TSpeedButton
           Left = 408
-          Top = 4
+          Top = 0
           Width = 41
           Height = 41
           Hint = 'Referenz/Hilfe'
@@ -2947,9 +2948,9 @@ object mjform: Tmjform
       end
       object iomemo: TMemo
         Left = 0
-        Top = 115
+        Top = 107
         Width = 628
-        Height = 606
+        Height = 614
         Align = alClient
         BorderStyle = bsNone
         Font.Charset = ANSI_CHARSET
@@ -2964,6 +2965,8 @@ object mjform: Tmjform
         ScrollBars = ssVertical
         TabOrder = 1
         OnKeyPress = iomemoKeyPress
+        ExplicitTop = 106
+        ExplicitHeight = 615
       end
       object adpanel: TPanel
         Left = 0
@@ -3153,7 +3156,7 @@ object mjform: Tmjform
     Left = 328
     Top = 655
     Bitmap = {
-      494C01011800B8001C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011800B800280210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -6,17 +6,20 @@ print == 2 [] '!
 showgraph == 3 [] '!
 loadstring == 4 [] '!
 savestring == 5 [] '!
+run == 6 [] '!
+dump == 7 [] '!
 
 clear == [] unstack
 (uncons == dup first swap rest)
 (swap3 == [] cons cons cons reverse uncons uncons uncons pop) (rot wie???)
 (rotate == [] cons cons cons reverse uncons uncons uncons pop)
+unit == [] cons
 pair == [] cons cons
 unpair == uncons uncons pop
 
 (swons == swap cons)
 (unswons == uncons swap)
-swoncat == swap concat
+(swoncat == swap concat)
 (rolldown == [swap] dip swap)
 (rollup   == swap [swap] dip)
 

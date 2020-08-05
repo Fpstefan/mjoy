@@ -30,6 +30,7 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       edupstacknull = 'dup > stacknull > '+estacknull;//???
       epopstacknull = 'pop > stacknull > '+estacknull;//???
       eswapstacknull = 'swap > stacknull > '+estacknull;//???
+      eoverstacknull = 'over > stacknull > '+estacknull;
       efirststacknull = 'first > stacknull > '+estacknull;
       //efirsttypenocons = 'first > typenocons > ''Typ ist nicht cons.''';
       ereststacknull = 'rest > stacknull > '+estacknull;
@@ -56,6 +57,12 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       etypestacknull = 'type > stacknull > '+estacknull;//???
       eintstacknull = 'int > stacknull > '+estacknull;
       einttypenofloat = 'int > typenofloat > "Fließkommazahl erwartet."';
+      epredstacknull = 'pred > stacknull > '+estacknull;
+      epredtypenonum = 'pred > typenonum > "Float oder Char erwartet."';//???
+      esuccstacknull = 'succ > stacknull > '+estacknull;
+      esucctypenonum = 'succ > typenonum > "Float oder Char erwartet."';//???
+      esignstacknull = 'sign > stacknull > '+estacknull;
+      esigntypenofloat = 'sign > typenofloat > "Fließkommazahl erwartet."';
       eabsstacknull='abs > stacknull > '+estacknull;
       eabstypenofloat='abs > typenofloat > "Fließkommazahl erwartet."';
       enegstacknull = 'neg > stacknull > '+estacknull;
@@ -68,6 +75,8 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       elogtypenofloat = 'log > typenofloat > "Fließkommazahl erwartet."';
       elog10stacknull = 'log10 > stacknull > '+estacknull;
       elog10typenofloat = 'log10 > typenofloat > "Fließkommazahl erwartet."';
+      elog2stacknull = 'log2 > stacknull > '+estacknull;
+      elog2typenofloat = 'log2 > typenofloat > "Fließkommazahl erwartet."';
       //
       eequalstacknull = '= > stacknull > '+estacknull;
       eltstacknull = '< > stacknull > '+estacknull;
@@ -93,6 +102,9 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       enametypenoident='name > typenoident > "Typ ist kein Ident."';
       ebodystacknull='body > stacknull > '+estacknull;
       ebodytypenoident='body > typenoident > "Typ ist kein Ident."';
+      euserstacknull = 'user > stacknull > '+estacknull;
+      eusertypenoident = 'user > typenoident > "Typ ist kein Ident."';
+      eaddrstacknull = 'addr > stacknull > '+estacknull;
       //
       //eshowgraphstacknull='showgraph > stacknull > '+estacknull;
       //
@@ -102,6 +114,8 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       eiftypenobool = 'if > typenobool > "Typ ist kein logischer Wert."';
       ebranchstacknull = 'branch > stacknull > '+estacknull;
       ebranchtypenobool = 'branch > typenobool > "Typ ist kein logischer Wert."';
+      echoicestacknull = 'choice > stacknull > '+estacknull;
+      echoicetypenobool = 'choice > typenobool > "Typ ist kein logischer Wert."';
       eselectstacknull='select > stacknull > '+estacknull;
       eselecttypenolist='select > typenolist > "Typ ist keine Liste."';
       eselectnocons='select > typenocons > "Typ ist keine Cons-Zelle."';//???
@@ -142,6 +156,8 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       edroprounderror='drop > rounderror > "Rundungsfehler."';
       econcatstacknull='concat > stacknull > '+estacknull;
       econcattypenolist='concat > typenolist > "Typ ist keine Liste."';
+      eswoncatstacknull = 'swoncat > stacknull > '+estacknull;
+      eswoncattypenolist = 'swoncat > typenolist > "Typ ist keine Liste."';
       egetstacknull='get > stacknull > '+estacknull;
       egettypenolist='get > typenolist > "Typ ist keine Liste."';
       egettypenoident='get > typenoident > "Typ ist kein Bezeichner."';
@@ -163,14 +179,22 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       esintypenofloat = 'sin > typenofloat > "Fließkommazahl erwartet."';
       ecosstacknull = 'cos > stacknull > '+estacknull;
       ecostypenofloat = 'cos > typenofloat > "Fließkommazahl erwartet."';
-      etanstacknull='tan > stacknull > '+estacknull;
-      etantypenofloat='tan > typenofloat > "Fließkommazahl erwartet."';
-      easinstacknull='asin > stacknull > '+estacknull;
-      easintypenofloat='asin > typenofloat > "Fließkommazahl erwartet."';
-      eacosstacknull='acos > stacknull > '+estacknull;
-      eacostypenofloat='acos > typenofloat > '+efloatexpected;
-      eatanstacknull='atan > stacknull > '+estacknull;
-      eatantypenofloat='atan > typenofloat > '+efloatexpected;
+      etanstacknull = 'tan > stacknull > '+estacknull;
+      etantypenofloat = 'tan > typenofloat > "Fließkommazahl erwartet."';
+      easinstacknull = 'asin > stacknull > '+estacknull;
+      easintypenofloat = 'asin > typenofloat > "Fließkommazahl erwartet."';
+      eacosstacknull = 'acos > stacknull > '+estacknull;
+      eacostypenofloat = 'acos > typenofloat > '+efloatexpected;
+      eatanstacknull = 'atan > stacknull > '+estacknull;
+      eatantypenofloat = 'atan > typenofloat > '+efloatexpected;
+      eatan2stacknull = 'atan2 > stacknull > '+estacknull;
+      eatan2typenofloat = 'atan2 > typenofloat > "Fließkommazahl erwartet."';
+      esinhstacknull = 'sinh > stacknull > '+estacknull;
+      esinhtypenofloat = 'sinh > typenofloat > "Fließkommazahl erwartet."';
+      ecoshstacknull = 'cosh > stacknull > '+estacknull;
+      ecoshtypenofloat = 'cosh > typenofloat > "Fließkommazahl erwartet."';
+      etanhstacknull = 'tanh > stacknull > '+estacknull;
+      etanhtypenofloat = 'tanh > typenofloat > "Fließkommazahl erwartet."';
       esqrtstacknull='sqrt > stacknull > '+estacknull;
       esqrttypenofloat='sqrt > typenofloat > "Fließkommazahl erwartet."';
       //
@@ -183,6 +207,10 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       echroutofrange='chr > outofrange > "Wert außerhalb des Unicode-Bereiches."';
       eordstacknull='ord > stacknull > '+estacknull;
       eordtypenochar='ord > typenochar > "Char erwartet."';
+      eminstacknull = 'min > stacknull > '+estacknull;
+      emintypenocomp = 'min > typenocomp > "Typen sind nicht zu vergleichen."';//???
+      emaxstacknull = 'max > stacknull > '+estacknull;
+      emaxtypenocomp = 'max > typenocomp > "Typen sind nicht zu vergleichen."';//???
       //
       ergbstacknull = 'rgb > stacknull > '+estacknull;
       ergbtypenofloat='rgb > typenofloat > '+etypenofloat;
@@ -190,7 +218,8 @@ const efuncundef = 'eval > funcundef > "Funktion ist nicht definiert."';
       eoutstacknull='out > stacknull > '+estacknull;
       eparsestacknull='parse > stacknull > '+estacknull;
       eparsetypenolist='parse > typenolist > "Typ ist keine Liste."';
-      etostrstacknull='tostr > stacknull > '+estacknull;
+      etostrstacknull = 'tostr > stacknull > '+estacknull;
+      eerrorstacknull = 'error > stacknull > '+estacknull;
 
 var idundef: cardinal = xnil;
     //idtrue: cardinal = xnil;
@@ -254,6 +283,18 @@ begin if (stack=xnil) then raise exception.create(eswapstacknull);
       x:=cell[stack].addr;
       stack:=cell[stack].decr;
       stack:=cons(x,cons(y,stack));
+      x:=xnil;
+      y:=xnil
+end;
+
+procedure fover;
+begin if (stack=xnil) then raise exception.create(eoverstacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(eoverstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      stack:=cons(x,cons(y,cons(x,stack)));
       x:=xnil;
       y:=xnil
 end;
@@ -448,6 +489,24 @@ begin if (stack=xnil) then raise exception.create(elog10stacknull);
       x:=xnil
 end;
 
+procedure flog2;
+begin if (stack=xnil) then raise exception.create(elog2stacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xfloat) then raise exception.create(elog2typenofloat);
+      stack:=cons(newfloat(log2(cell[x].fnum)),stack);//try?
+      x:=xnil
+end;
+
+procedure fsign;
+begin if (stack=xnil) then raise exception.create(esignstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xfloat) then raise exception.create(esigntypenofloat);
+      stack:=cons(newfloat(sign(cell[x].fnum)),stack);//try?
+      x:=xnil
+end;
+
 procedure fabs;
 begin if (stack=xnil) then raise exception.create(eabsstacknull);
       x:=cell[stack].addr;
@@ -561,6 +620,76 @@ begin if (stack=xnil) then raise exception.create(eltstacknull);
                       raise exception.create(elttypenocomp)
                    else if less(x,y) then z:=idtrue
                                      else z:=idfalse;//idundef;//prov
+      else z:=idundef//prov
+      end;
+      stack:=cons(z,stack);
+      x:=xnil;
+      y:=xnil;
+      z:=xnil
+end;
+
+procedure fmin;
+begin if (stack=xnil) then raise exception.create(eminstacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(eminstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      case typeof[x] of
+           xnull : if not((typeof[y]=xcons) or (y=xnil)) then
+                      raise exception.create(emintypenocomp)
+                   else if less(x,y) then z:=x
+                                     else z:=y;
+           xident: if (typeof[y]<>xident) then raise exception.create(emintypenocomp)
+                   else if (cell[cell[x].pname].pstr^ < cell[cell[y].pname].pstr^)
+                        then z:=x
+                        else z:=y;
+           xint  : z:=idundef;//prov
+           xfloat: if (typeof[y]<>xfloat) then raise exception.create(emintypenocomp)
+                   else if (cell[x].fnum < cell[y].fnum) then z:=x
+                                                         else z:=y;
+           xchar : if (typeof[y]<>xchar) then raise exception.create(emintypenocomp)
+                   else if (cell[x].ch < cell[y].ch) then z:=x
+                                                     else z:=y;
+           xcons : if not((typeof[y]=xcons) or (y=xnil)) then
+                      raise exception.create(emintypenocomp)
+                   else if less(x,y) then z:=x
+                                     else z:=y;//idundef;//prov
+      else z:=idundef//prov
+      end;
+      stack:=cons(z,stack);
+      x:=xnil;
+      y:=xnil;
+      z:=xnil
+end;
+
+procedure fmax;
+begin if (stack=xnil) then raise exception.create(emaxstacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(emaxstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      case typeof[x] of
+           xnull : if not((typeof[y]=xcons) or (y=xnil)) then
+                      raise exception.create(emaxtypenocomp)
+                   else if less(x,y) then z:=y
+                                     else z:=x;
+           xident: if (typeof[y]<>xident) then raise exception.create(emaxtypenocomp)
+                   else if (cell[cell[x].pname].pstr^ < cell[cell[y].pname].pstr^)
+                        then z:=y
+                        else z:=x;
+           xint  : z:=idundef;//prov
+           xfloat: if (typeof[y]<>xfloat) then raise exception.create(emaxtypenocomp)
+                   else if (cell[x].fnum < cell[y].fnum) then z:=y
+                                                         else z:=x;
+           xchar : if (typeof[y]<>xchar) then raise exception.create(emaxtypenocomp)
+                   else if (cell[x].ch < cell[y].ch) then z:=y
+                                                     else z:=x;
+           xcons : if not((typeof[y]=xcons) or (y=xnil)) then
+                      raise exception.create(emaxtypenocomp)
+                   else if less(x,y) then z:=y
+                                     else z:=x;//idundef;//prov
       else z:=idundef//prov
       end;
       stack:=cons(z,stack);
@@ -745,6 +874,14 @@ begin if (stack=xnil) then raise exception.create(enamestacknull);
       x:=xnil
 end;
 
+procedure faddr;
+begin if (stack=xnil) then raise exception.create(eaddrstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      stack:=cons(newfloat(x),stack);
+      x:=xnil
+end;
+
 procedure fbody;
 begin if (stack=xnil) then raise exception.create(ebodystacknull);
       x:=cell[stack].addr;
@@ -754,6 +891,19 @@ begin if (stack=xnil) then raise exception.create(ebodystacknull);
       if (typeof[y]=xint) then stack:=cons(newfloat(cell[y].inum),stack)
       else if (typeof[y]=xcons) then stack:=cons(y,stack)
       else stack:=cons(idundef,stack);
+      x:=xnil;
+      y:=xnil
+end;
+
+procedure fuser;
+begin if (stack=xnil) then raise exception.create(euserstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xident) then raise exception.create(eusertypenoident);
+      y:=cell[x].value;
+      if      (typeof[y]=xint)  then stack:=cons(idfalse,stack)
+      else if (typeof[y]=xcons) then stack:=cons(idtrue,stack)
+      else stack:=cons(idfalse,stack); // user or not? ,xnil
       x:=xnil;
       y:=xnil
 end;
@@ -820,6 +970,24 @@ begin if (stack=xnil) then raise exception.create(ebranchstacknull);
       z:=xnil;
       //
       eval;//prov if->eval
+end;
+
+procedure fchoice;
+begin if (stack=xnil) then raise exception.create(echoicestacknull);
+      z:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(echoicestacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(echoicestacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if      (x=idtrue)  then stack:=cons(y,stack)
+      else if (x=idfalse) then stack:=cons(z,stack)
+      else raise exception.create(echoicetypenobool);
+      x:=xnil;
+      y:=xnil;
+      z:=xnil
 end;
 
 procedure fselect;
@@ -1172,6 +1340,36 @@ begin if (stack=xnil) then raise exception.create(econcatstacknull);
       z:=xnil
 end;
 
+procedure fswoncat;
+var p: cardinal;
+begin if (stack=xnil) then raise exception.create(eswoncatstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(eswoncatstacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if not((typeof[x]=xcons) or (x=xnil)) then
+         raise exception.create(eswoncattypenolist);
+      if not((typeof[y]=xcons) or (y=xnil)) then
+         raise exception.create(eswoncattypenolist);
+      z:=xnil;
+      while (x<>xnil) do begin
+            z:=cons(cell[x].addr,z);
+            x:=cell[x].decr
+      end;
+      //y=restliste
+      while (z<>xnil) do begin
+            p:=z;
+            z:=cell[z].decr;
+            cell[p].decr:=y;
+            y:=p
+      end;
+      stack:=cons(y,stack);
+      x:=xnil;
+      y:=xnil;
+      z:=xnil
+end;
+
 procedure fiota;
 var n: int64;
 begin if (stack=xnil) then raise exception.create(eiotastacknull);
@@ -1258,6 +1456,30 @@ begin if (stack=xnil) then raise exception.create(eputstacknull);
       z:=xnil//
 end;
 
+procedure fpred;
+begin if (stack=xnil) then raise exception.create(epredstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if      (typeof[x]=xfloat) then
+         stack:=cons(newfloat(cell[x].fnum - 1),stack)
+      else if (typeof[x]=xchar)  then
+         stack:=cons(newchar(pred(cell[x].ch)),stack)// pred(#0)?
+      else raise exception.create(epredtypenonum);//?
+      x:=xnil
+end;
+
+procedure fsucc;
+begin if (stack=xnil) then raise exception.create(esuccstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if      (typeof[x]=xfloat) then
+         stack:=cons(newfloat(cell[x].fnum + 1),stack)
+      else if (typeof[x]=xchar)  then
+         stack:=cons(newchar(succ(cell[x].ch)),stack)// succ(max)?
+      else raise exception.create(esucctypenonum);//?
+      x:=xnil
+end;
+
 procedure frad;
 begin if (stack=xnil) then raise exception.create(eradstacknull);
       x:=cell[stack].addr;
@@ -1335,6 +1557,47 @@ begin if (stack=xnil) then raise exception.create(eatanstacknull);
       stack:=cell[stack].decr;
       if (typeof[x]<>xfloat) then raise exception.create(eatantypenofloat);
       stack:=cons(newfloat(arctan(cell[x].fnum)),stack);  //try?
+      x:=xnil
+end;
+
+procedure fatan2;
+begin if (stack=xnil) then raise exception.create(eatan2stacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (stack=xnil) then raise exception.create(eatan2stacknull);
+      y:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xfloat) then raise exception.create(eatan2typenofloat);
+      if (typeof[y]<>xfloat) then raise exception.create(eatan2typenofloat);
+      stack:=cons(newfloat(arctan2(cell[y].fnum,cell[x].fnum)),stack);  //try?
+      x:=xnil;
+      y:=xnil
+end;
+
+procedure fsinh;
+begin if (stack=xnil) then raise exception.create(esinhstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xfloat) then raise exception.create(esinhtypenofloat);
+      stack:=cons(newfloat(sinh(cell[x].fnum)),stack);
+      x:=xnil
+end;
+
+procedure fcosh;
+begin if (stack=xnil) then raise exception.create(ecoshstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xfloat) then raise exception.create(ecoshtypenofloat);
+      stack:=cons(newfloat(cosh(cell[x].fnum)),stack);
+      x:=xnil
+end;
+
+procedure ftanh;
+begin if (stack=xnil) then raise exception.create(etanhstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]<>xfloat) then raise exception.create(etanhtypenofloat);
+      stack:=cons(newfloat(tanh(cell[x].fnum)),stack);
       x:=xnil
 end;
 
@@ -1476,6 +1739,17 @@ procedure fmaxcell;
 begin stack:=cons(newfloat(maxcell),stack)
 end;
 
+procedure ferror;
+var s: string;
+begin if (stack=xnil) then raise exception.create(eerrorstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]=xcons) then s:=tosequence(x)
+                           else s:=tovalue(x);
+      x:=xnil;
+      raise exception.create(s)
+end;
+
 //------------------------- Initialisierung ----------------------------
 
 function newidentproc(s: string;p: mjproc): cardinal;
@@ -1502,6 +1776,7 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('dup',fdup);
       newidentproc('pop',fpop);
       newidentproc('swap',fswap);
+      newidentproc('over',fover);
       newidentproc('rotate',frotate);
       newidentproc('rollup',frollup);
       newidentproc('rolldown',frolldown);
@@ -1517,14 +1792,18 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('*',fmul);
       newidentproc('/',fdiv);
       newidentproc('pow',fpow);//pow;
-      newidentproc('int',fint);
+      newidentproc('pred',fpred);
+      newidentproc('succ',fsucc);
+      newidentproc('sign',fsign);
       newidentproc('abs',fabs);//abs
       newidentproc('neg',fneg);//neg
+      newidentproc('int',fint);
       newidentproc('round',fround);//round
       //trunc (int?)  ,mod?
       newidentproc('exp',fexp);//exp
       newidentproc('log',flog);//log
       newidentproc('log10',flog10);//log10
+      newidentproc('log2',flog2);
       idtrue:=newidentproc('true',ftrue);
       idfalse:=newidentproc('false',ffalse);
       newidentproc('=',feq);
@@ -1548,15 +1827,18 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       idchar:=newidentproc('char',fchar);
       idstring:=newident('string',xnil);
       idundef:=newidentproc('undef',fundef);
+      newidentproc('user',fuser);
       //charseq
       newidentproc('type',ftype);
       newidentproc('name',fname);//name
       newidentproc('body',fbody);//body
       //intern
+      newidentproc('addr',faddr);
       newidentproc('i',fi);
       newidentproc('dip',fdip);            // noch austesten !!!!!
       newidentproc('if',fif);
       newidentproc('branch',fbranch);   //???
+      newidentproc('choice',fchoice);
       newidentproc('select',fselect);
       newidentproc('cond',fcond);
       newidentproc('try',ftry);
@@ -1574,7 +1856,7 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('take',ftake);//take
       newidentproc('drop',fdrop);//drop
       newidentproc('concat',fconcat);//concat
-      //swoncat
+      newidentproc('swoncat',fswoncat);//swoncat
       newidentproc('iota',fiota);
       newidentproc('get',fget);//get
       newidentproc('put',fput);//put
@@ -1590,6 +1872,10 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('acos',facos);//acos
       newidentproc('atan',fatan);//atan
       //sinh, cosh, tanh   ,atan2
+      newidentproc('atan2',fatan2);
+      newidentproc('sinh',fsinh);
+      newidentproc('cosh',fcosh);
+      newidentproc('tanh',ftanh);
       newidentproc('sqrt',fsqrt);//sqrt
       newidentproc('upper',fupper);
       newidentproc('lower',flower);
@@ -1599,6 +1885,8 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       ;
       //        newidentproc('showgraph',fshowgraph);
       //        newidentproc('print',fprint);
+      newidentproc('min',fmin);
+      newidentproc('max',fmax);
       newidentproc('rgb',frgb);
       newidentproc('gc',fgc);
       newidentproc('conts',fconts);//conts   estack       //prov  buggy!!!
@@ -1619,6 +1907,7 @@ begin for i:=0 to maxproc do proc[i]:=fundefined;
       newidentproc('parse',fparse);
       newidentproc('tostr',ftostr);
       newidentproc('maxcell',fmaxcell);
+      newidentproc('error',ferror);
       //
 end;
 

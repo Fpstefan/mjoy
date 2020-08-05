@@ -2,18 +2,19 @@ unit servunit;
 
 interface
 
-uses System.SysUtils,//exception
+uses Winapi.Windows,System.SysUtils,//exception
      System.Classes,//tstringlist
      Vcl.StdCtrls,//tmemo
      Vcl.ExtCtrls,//tpaintbox
      Vcl.Forms,//tform //Vcl.Graphics;//TCanvas
      System.Types,//TPoint
-     Vcl.Graphics;//clblack;
+     Vcl.Graphics,//clblack;
+     shellapi;
 
 const servmaxcelldef=300000;
       servmincell  = 100000;//bitte passend einstellen
       prompt='      ';
-      guiformheightsub=143;
+      guiformheightsub=135;
 
 const xnil = 0;//vmunit           //clWebGold = $00D7FF; clWebOrange = $00A5FF;
 
@@ -50,12 +51,14 @@ procedure servstopm;
 procedure servreaction;
 procedure initserv(mc: cardinal;var memo: tmemo;paintbox: tpaintbox;form: tform);
 procedure finalserv;
+procedure servrun(fname: string);//innerhalb von try verwenden!
 
 implementation
 
 uses vmunit, primunit;
 
 const eservprintexc = 'Print procedure not defined.';//engl.?
+      efilenotfound = 'file not found.';
       //emonadnonum = 'Monad > Zahlenwert erwartet.';
       //emonadnofloat = 'Monad > Float erwartet.';
       //emonadrounderr = 'Monad > Rundungsfehler.';
@@ -279,6 +282,7 @@ const emonadstacknull = 'monad > stacknull > '+estacknull;
       emsavestringtypenolist1='msavestring > typenolist > "Liste für den Dateinamen erwartet."';
       emsavestringtypenolist2='msavestring > typenolist > "Liste für den String erwartet."';
       emsavestringsaveerror = 'Datei kann nicht gespeichert werden.';
+      emrunstacknull = 'mrun > stacknull > '+estacknull;
 
 procedure mdot;
 begin if (stack=xnil) then raise exception.create(emdotstacknull);
@@ -370,6 +374,32 @@ begin if (stack=xnil) then raise exception.create(emsavestringstacknull);
       //
 end;
 
+procedure servrun(fname: string);//name bitte in try except verwenden! , // provi constanten
+const errorcode = 'ERRORCODE';
+var res: longint;
+begin //panelbar nullstring
+      if (guiform=nil) then raise exception.create('guiformular is nil...')//provi
+      else with guiform do begin
+         res:=shellexecute(handle,'open'#0,pWideChar(fname),#0,#0,sw_shownormal);//???
+         if (res<=32) then
+            case res of
+                 ERROR_FILE_NOT_FOUND: raise exception.create('"'+fname+'" - '+efilenotfound);
+            else raise exception.create('"'+fname+'" - '+errorcode+' #'+inttostr(res))
+            end
+      end
+end;
+
+procedure mrun;
+var fname: string;
+begin if (stack=xnil) then raise exception.create(emrunstacknull);
+      x:=cell[stack].addr;
+      stack:=cell[stack].decr;
+      if (typeof[x]=xcons) then fname:=AnsiDequotedStr(tosequence(x),'"')
+                           else fname:=AnsiDequotedStr(tovalue(x),'"');
+      x:=xnil;
+      servrun(fname)
+end;
+
 procedure servmonad;
 var i: int64;
 begin stack:=cell[stack].decr;
@@ -392,6 +422,8 @@ begin stack:=cell[stack].decr;
               3: mshowgraph;
               4: mloadstring;
               5: msavestring;
+              6: mrun;
+              7: servidentdump;
          else raise exception.create(emonadnofunc)
          end//
       end
