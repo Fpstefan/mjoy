@@ -1,6 +1,6 @@
 {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
 {\colortbl ;\red247\green150\blue70;\red75\green172\blue198;}
-{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\lang7\b\f0\fs28 Referenz f\'fcr mjoy\cf0\b0\fs22\line\fs24 vom  2020-07-24\fs22\par
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\lang7\b\f0\fs28 Referenz f\'fcr mjoy\cf0\b0\fs22\line\fs24 vom  2020-08-05\fs22\par
 \par
 \cf1\b\fs28 Definition von Bezeichnern\cf2\par
 \cf0\b0\i\fs24 bezeichner1\i0  \b ==\b0  \i wort1 wort2 wort3 ...\i0\line\i bezeichner2\i0  \b ==\b0  \i wort4 wort5 wort6 ...\line\par
@@ -15,7 +15,8 @@ liste\i0  \b unstack\line\b0 die \i liste\i0  wird zum neuen Stapel.\par
 \i xwert\i0  \b dup\b0\tab\tab --\tab\i xwert xwert\line\i0 Schiebt eine Extrakopie vom \i xwert\i0  auf den Stapel.\par
 \i wert\i0  \b pop\b0\tab\tab --\line Entfernt \i wert\i0  von der Spitze des Stapels.\par
 \i xwert ywert\i0  \b swap\b0\tab --\tab\i ywert xwert\line\i0 Vertauscht \i xwert\i0  und \i ywert\i0  an der Spitze des Stapels.\par
-\i x y z\i0  \b rotate\b0\tab\tab --\tab\i z y x\line\i0 Vertauscht \i x\i0  und \i z\i0 .\par
+\i x y\i0  \b over\b0\tab\tab --\tab\i x y x\par
+x y z\i0  \b rotate\b0\tab\tab --\tab\i z y x\line\i0 Vertauscht \i x\i0  und \i z\i0 .\par
 \i x y z\i0  \b rollup\b0\tab\tab --\tab\i z x y\par
 x y z\i0  \b rolldown\b0\tab\tab --\tab\i y z x\i0\par
 ... \i num\i0  \b index\b0\tab\tab --\tab\i stackwert\line\i0 Pickt eine Kopie vom \i stackwert\i0  mit der Position \i num\i0  relativ zur Stapelspitze aus\line dem Stapel und schiebt ihn auf den Stapel;\line mit \i num \i0 = 1 -> erster Wert, \i num \i0 = 2 -> zweiter Wert, ...\par
@@ -28,6 +29,8 @@ x y z\i0  \b rolldown\b0\tab\tab --\tab\i y z x\i0\par
 \i liste\i0  \b print\b0\tab\tab\tab --\line Gibt die \i liste\i0  ohne eckige Klammern aus.\tab (jetzt Monadenverhalten)\par
 \i fname\i0  \b loadstring\b0\tab\tab --\tab\i string\i0\line L\'e4dt den Inhalt einer Textdatei und legt ihn als Charliste auf dem Stapel ab.\line\tab\tab\tab\tab\tab\tab (jetzt Monadenverhalten)\par
 \i fname\i0  \i string\i0  \b savestring\b0\tab --\line Speichert die Charliste (string) als Text in einer Textdatei ab.\line\tab\tab\tab\tab\tab\tab (jetzt Monadenverhalten)\par
+\i fname\i0  \b run\b0\tab\tab\tab --\line Startet die Datei \i fname\i0 .\tab\tab\tab (jetzt Monadenverhalten)\par
+\b dump\b0\tab\tab\tab\tab --\tab\tab (jetzt Monadenverhalten)\par
 \par
 \cf1\b\fs28 Befehle f\'fcr Listenverarbeitung\cf0\b0\fs22\par
 \b\fs24 [\b0\i wert1 wert2 wert3 ...\b\i0 ]\b0\i\par
@@ -47,7 +50,8 @@ liste\i0  \b first\b0\tab\tab --\tab\i wert\line wert\i0  ist der erste Wert der
 \i liste num\i0  \b at\b0\tab\tab --\tab\i element\sub num\line\nosupersub\i0 Pickt das \i element\sub\i0 num\nosupersub  aus der Liste.\par
 \i liste1 num wert\i0  \b set\b0\tab --\tab\i liste\par
 matrix1\i0  \b trans\b0\tab\tab --\tab\i matrix\par
-wert1 wert2\i0  \b pair\b0\tab --\tab\i [wert1 wert2]\par
+wert\i0  \b unit\b0\tab\tab --\tab [\i wert\i0 ]\par
+\i wert1 wert2\i0  \b pair\b0\tab --\tab\i [wert1 wert2]\par
 [wert1 wert2]\i0  \b unpair\b0\tab --\tab\i wert1 wert2\par
 \i0\par
 \cf1\b\fs28 Befehle f\'fcr das Verarbeiten von Dict-Listen\cf0\b0\fs22\par
@@ -61,13 +65,17 @@ dict key\i0  \b dictget\b0\tab\tab --\tab\i wert\line dict key\i0  \b get\b0\tab
 \i num1 num2\i0  \b *\b0\tab\tab --\tab\i num\line num\i0  ist das Produkt von \i num1\i0  und \i num2\i0 .\par
 \i num1 num2\i0  \b /\b0\tab\tab --\tab\i num\line num\i0  ist der Quotient von \i num1\i0  dividiert durch \i num2\i0 .\par
 \i num1 num2\i0  \b pow\b0\tab --\tab\i num\i0\par
-\i num1\i0  \b int\tab\b0\tab --\tab\i num\line num\i0  ist der ganzzahlige Anteil von \i num1\i0 .\par
-\i num1\i0  \b abs\b0\tab\tab --\tab\i num\i0\par
+\i num1\i0  \b pred\b0\tab\tab --\tab\i num\par
+num1\i0  \b succ\b0\tab\tab --\tab\i num\par
+num1\i0  \b sign\b0\tab\tab --\tab\i num\par
+num1\i0  \b abs\b0\tab\tab --\tab\i num\i0\par
 \i num1\i0  \b neg\b0\tab\tab --\tab\i num\line num\i0  ist der negative Wert von \i num1\i0 .\par
+\i num1\i0  \b int\tab\b0\tab --\tab\i num\line num\i0  ist der ganzzahlige Anteil von \i num1\i0 .\par
 \i num1\i0  \b round\b0\tab\tab --\tab\i num\i0\par
 \i num1 \b\i0 exp\b0\tab\tab --\tab\i num\i0\par
 \i num1\i0  \b log\b0\tab\tab --\tab\i num\par
-num1\i0  \b log10\b0\tab\tab --\tab\i num\i0\par
+num1\i0  \b log10\b0\tab\tab --\tab\i num\par
+num1\i0  \b log2\b0\tab\tab --\tab\i num\i0\par
 \b pi\b0\tab\tab\tab --\tab 3.141592653589793\par
 \i radiwinkel\i0  \b sin\b0\tab\tab --\tab\i num\line num\i0  ist der Sinus vom \i winkel\i0  im Bogenma\'df.\par
 \i radiwinkel\i0  \b cos\b0\tab\tab --\tab\i num\line num\i0  ist der Cosinus vom \i winkel\i0  im Bogenma\'df.\par
@@ -75,6 +83,10 @@ num1\i0  \b log10\b0\tab\tab --\tab\i num\i0\par
 num1\i0  \b asin\b0\tab\tab --\tab\i radiwinkel\par
 num1\i0  \b acos\b0\tab\tab --\tab\i radiwinkel\par
 num1\i0  \b atan\b0\tab\tab --\tab\i radiwinkel\par
+numy numx\i0  \b atan2\b0\tab --\tab\i radiwinkel\par
+num1\i0  \b sinh\b0\tab\tab --\tab\i num\par
+num1\i0  \b cosh\b0\tab\tab --\tab\i num\par
+num1\i0  \b tanh\b0\tab\tab --\tab\i num\par
 num1\i0  \b sqrt\b0\tab\tab --\tab\i num\line num\i0  ist die Quadratwurzel von \i num1\i0 .\par
 \i [num1 num2 ... numn]\i0  \b sum\b0\tab\tab --\tab\i num\line\i0 Summe aller Elemente der Liste.\i\par
 \i0\par
@@ -100,13 +112,15 @@ wert\i0  \b ident\b0\tab\tab --\tab\i bool\par
 wert\i0  \b float\b0\tab\tab --\tab\i bool\par
 wert\i0  \b char\b0\tab\tab --\tab\i bool\par
 wert\i0  \b undef\b0\tab\tab --\tab\i bool\par
+wert\i0  \b user\b0\tab\tab --\tab\i bool\par
 wert\i0  \b type 'null =\b0\tab --\tab\i bool\line wert\i0  \b type 'cons =\b0\tab --\tab\i bool\line wert\i0  \b type 'ident =\b0\tab --\tab\i bool\line wert\i0  \b type 'float =\b0\tab --\tab\i bool\line wert\i0  \b type 'char =\b0\tab --\tab\i bool\line wert\i0   \b 'undef   =\b0\tab --\tab\i bool\par
 wert liste\i0  \b in\b0\tab\tab --\tab\i bool\par
 \i0\par
 \cf1\b\fs28 Befehle f\'fcr die Ablaufsteuerung\cf0\b0\fs22\par
 \b\fs24 '\b0   \i bezeichner\i0\tab\tab\tab --\tab\i bezeichner\line\i0 Der \i bezeichner\i0 , der dem Quote folgt, wird auf den Stapel geschoben.\par
 \i bool [dann] [sonst]\i0  \b if\b0\tab\tab --\tab ...\line Wenn \i bool\i0  = true -> \i dann\i0  wird ausgef\'fchrt;\line wenn \i bool\i0  = false -> \i sonst\i0  wird ausgef\'fchrt.\par
-\i bool [dann] [sonst]\i0  \b branch\b0\tab --\tab ...\tab *wie \b if\par
+\i bool [dann] [sonst]\i0  \b branch\b0\tab --\tab ...\tab *wie \b if\b0\par
+\i bool wert1 wert2\i0  \b choice\b0\tab --\tab\i wert\b\i0\par
 \b0\i werti [[wert1 rest1...] [wert2 rest2...] ... [wertn restn...]]\i0  \b select\b0\tab --\tab\i [resti...]\par
 [[bool1 rest1...] [bool2 rest2...] ... [true restn...]] \b\i0 cond\b0\tab --\tab\i ...\i0\par
 \i num [programm]\i0  \b times\tab\b0 --\tab ...\line\i num\i0 -mal wird das \i programm\i0  ausgef\'fchrt.\par
@@ -127,14 +141,18 @@ num [programm]\i0  \b '!\b0\tab\tab --\tab ...\i\line [monade] [programm]\i0  \b
 zeichen1\i0  \b lower\b0\tab\tab --\tab\i zeichen\line zeichen\i0  ist der Ansilowercase von \i zeichen1\i0 .\par
 \i num\i0  \b chr\b0\tab --\tab\i zeichen\i0\par
 \i zeichen\i0  \b ord\b0\tab --\tab\i num\par
+wert1 wert2 \b\i0 min\b0\tab --\tab\i wert\par
+wert1 wert2\i0  \b max\b0\tab --\tab\i wert\par
 ident\i0  \b name\b0\tab --\tab\i charliste\par
 ident\i0  \b body\b0\tab --\tab\i num\i0\line\tab\tab --\tab\i liste\par
+wert\i0  \b addr\b0\tab --\tab\i num\line\i0 Zellenadresse vom Wert.\i\par
 charliste\i0  \b parse\b0\tab\tab --\tab\i liste\i0\line Wandelt die Stringdarstellung in eine \i liste\i0  von internen Darstellungen um.\par
 \i wert\i0  \b tostr\b0\tab\tab --\tab\i charliste\i0\line Wandelt den \i wert\i0  in eine Stringdarstellung um.\par
 \b gc\b0\tab\tab --\line Erzwingt eine Garbage Collection, die sonst nur spontan auftritt,\line wenn die Freelist ersch\'f6pft ist.\par
 \i wert\i0  \b out\b0\tab --\tab\tab\tab *Seiteneffekt\line M\'f6glichkeit, um Fehlern auf die Schliche zu kommen.\par
 \b quit\b0\tab\tab --\line Beendet den Interpreter.\par
 \b identlist\b0\tab --\tab\i liste\i0\line Liste mit den verwendeten Bezeichnern.\par
+\i wert\i0  \b error\b0\tab --\tab\tab\tab *\i exception\i0\par
 \par
 \cf1\b\fs28 Befehle f\'fcr Turtlegraphic\cf0\b0\fs22\par
 \fs24 die Turtle dreht sich im Bogenma\'df (Radiant); eine Umdrehung ist 2pi.\par
@@ -163,6 +181,6 @@ charliste\i0  \b parse\b0\tab\tab --\tab\i liste\i0\line Wandelt die Stringdarst
 \par
 \par
 \par
-(c) 2016.08, 2016.09 - 2020.07- Fpstefan\par
+(c) 2016.08, 2016.09 - 2020.08- Fpstefan\par
 }
  
