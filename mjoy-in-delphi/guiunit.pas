@@ -585,4 +585,7 @@ begin toolpanel.visible:=not(toolpanel.visible);
       toolitem.checked:=toolpanel.visible
 end;
 
-end. // (c) 2016.08 - 2020.07 Fpstefan
+end.
+
+
+// (CC BY 3.0 DE) Fpstefan

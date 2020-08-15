@@ -1931,4 +1931,7 @@ begin for i:=0 to maxproc do proc[i]:=fundef;
       ;
 end;}
 
-end. // (c) 2016.08,2016.09 - 2020.07 Fpstefan
+end.
+
+
+// (CC BY 3.0 DE) Fpstefan

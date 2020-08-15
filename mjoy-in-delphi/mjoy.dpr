@@ -19,3 +19,6 @@ begin
   Application.CreateForm(TinitForm, initForm);
   Application.Run;
 end.
+
+
+// (CC BY 3.0 DE) Fpstefan
