@@ -11,3 +11,6 @@ Subset of the Programming Language ***Joy*** with Turtle Graphics
 ---> [QuickStartGuide.pdf](https://github.com/Fpstefan/mjoy/blob/master/QuickStartGuide.pdf)\
 ---> [Get-It](https://www.heise.de/download/product/mjoy) ... (for Downloading Installer)
 
+
+Licence of all sourcecode in this Repo is now: (CC BY 3.0 DE) Fpstefan
+
