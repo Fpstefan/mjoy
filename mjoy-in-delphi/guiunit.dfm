@@ -2955,8 +2955,8 @@ object mjform: Tmjform
         BorderStyle = bsNone
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Fixedsys'
+        Font.Height = -16
+        Font.Name = 'Tahoma'
         Font.Style = []
         Lines.Strings = (
           'iomemo')
@@ -3154,7 +3154,7 @@ object mjform: Tmjform
     Left = 328
     Top = 655
     Bitmap = {
-      494C01011800B8002C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011800B800300210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
