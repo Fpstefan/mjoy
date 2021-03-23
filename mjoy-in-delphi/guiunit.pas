@@ -56,6 +56,7 @@ type
     savememoitem: TMenuItem;
     savepictitem: TMenuItem;
     inititem: TMenuItem;
+    fontitem: TMenuItem;
     websiteitem: TMenuItem;
     guideitem: TMenuItem;
     dochelpitem: TMenuItem;
@@ -63,8 +64,9 @@ type
     favoritem: TMenuItem;
     toolitem: TMenuItem;
     N3item: TMenuItem;
-    quititem: TMenuItem;
     ImageList1: TImageList;
+    mjfontdialog: TFontDialog;
+    quititem: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -104,6 +106,8 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormIdle(Sender: TObject; var Done: Boolean);
     procedure execprogfile(fname: string);
+    procedure fontitemClick(Sender: TObject);
+    procedure iomemoDblClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -147,6 +151,12 @@ const pixelinpopupmenu = 7;
       dydef = 340;
       wsdef = wsnormal;
       tbdef=true;
+      fontname    = 'fontname';
+      fontcharset = 'fontcharset';
+      fontcolor   = 'fontcolor';
+      fontheight  = 'fontheight';
+      fontpitch   = 'fontpitch';
+      fontsize    = 'fontsize';
       readinifileerror = 'Kann nicht bearbeitet werden. (readinifile)'#13#10
                          +' Bitte beenden!';
       writeinifileerror = 'Kann nicht geschrieben werden. (writeinifile)';
@@ -174,7 +184,7 @@ begin beep;
 end;
 
 function readinifile(mc: int64): int64;
-var s: string;
+var fname,s: string;
 begin readinifile:=mc;
       try mjinifile:=TRegistryIniFile.create(inifilename);
           with mjinifile,mjform do begin
@@ -197,6 +207,22 @@ begin readinifile:=mc;
                pictfilename:=readstring(mjsection,pictdef,'');
                //toolbar;
                mc:=readinteger(mjsection,mcs,mc);
+               fname:=readstring(mjsection,fontname,'');
+               if (fname<>'') then with iomemo.font do begin
+                  charset:=readinteger(mjsection,fontcharset,charset);
+                  color:=readinteger(mjsection,fontcolor,color);
+                  //fontadapter
+                  //handle
+                  height:=readinteger(mjsection,fontheight,height);
+                  name:=readstring(mjsection,fontname,name);
+                  //orientation
+                  //ownercriticalsection
+                  pitch:=tfontpitch(readinteger(mjsection,fontpitch,ord(pitch)));
+                  //pixelsperinch
+                  //quality
+                  size:=readinteger(mjsection,fontsize,size);
+                  //style;
+               end;
                readinifile:=mc
           end;
           mjinifile.free
@@ -224,6 +250,21 @@ begin if (inifilename='') then exit;
                writestring(mjsection,sheetdef,sheetfilename);
                writestring(mjsection,pictdef,pictfilename);
                //toolbar;
+               with iomemo.font do begin
+                    writeinteger(mjsection,fontcharset,charset);
+                    writeinteger(mjsection,fontcolor,color);
+                    //fontadapter
+                    //handle
+                    writeinteger(mjsection,fontheight,height);
+                    writestring (mjsection,fontname,name);
+                    //orientation
+                    //ownercriticalsection
+                    writeinteger(mjsection,fontpitch,ord(pitch));
+                    //pixelsperinch
+                    //quality
+                    writeinteger(mjsection,fontsize,size);
+                    //style;
+               end;
                updatefile
           end;
           mjinifile.free
@@ -449,6 +490,10 @@ begin savepictdialog.initialdir:=extractslashpath(pictfilename);
       end//
 end;
 
+procedure Tmjform.iomemoDblClick(Sender: TObject);
+begin servprint(prompt)
+end;
+
 procedure tmjform.iomemoKeyPress(Sender: TObject; var Key: Char);
 begin if (key=#13) then begin doit;
                               key:=#27;
@@ -461,7 +506,7 @@ procedure tmjform.mjimageMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var t: tpoint;
 begin t:=mjimage.clienttoscreen(point(x,y));
-      mjpopupmenu.Popup(t.x-pixelinpopupmenu,t.y-pixelinpopupmenu)
+      mjpopupmenu.Popup(t.x-pixelinpopupmenu,t.y{-pixelinpopupmenu})
 end;
 
 procedure tmjform.mjimageMouseEnter(Sender: TObject);
@@ -578,6 +623,11 @@ end;
 
 procedure Tmjform.favoritemClick(Sender: TObject);
 begin servtogglepaintbox
+end;
+
+procedure Tmjform.fontitemClick(Sender: TObject);
+begin mjfontdialog.font:=iomemo.font;
+      if mjfontdialog.execute then iomemo.font:=mjfontdialog.font
 end;
 
 procedure Tmjform.toolitemClick(Sender: TObject);

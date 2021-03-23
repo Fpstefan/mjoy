@@ -115,7 +115,7 @@ object errForm: TerrForm
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
-      Font.Name = 'Arial'
+      Font.Name = 'Fixedsys'
       Font.Style = []
       ParentFont = False
       TabOrder = 0

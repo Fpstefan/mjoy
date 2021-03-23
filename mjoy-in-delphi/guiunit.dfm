@@ -2964,6 +2964,7 @@ object mjform: Tmjform
         PopupMenu = mjPopupMenu
         ScrollBars = ssVertical
         TabOrder = 1
+        OnDblClick = iomemoDblClick
         OnKeyPress = iomemoKeyPress
       end
       object adpanel: TPanel
@@ -3100,6 +3101,10 @@ object mjform: Tmjform
       Caption = 'Initialisierung ...'
       OnClick = inititemClick
     end
+    object fontitem: TMenuItem
+      Caption = 'Memo Font ...'
+      OnClick = fontitemClick
+    end
     object websiteitem: TMenuItem
       Caption = 'Website'
       OnClick = websiteitemClick
@@ -3128,6 +3133,7 @@ object mjform: Tmjform
     end
     object N3item: TMenuItem
       Caption = '-'
+      OnClick = quititemClick
     end
     object quititem: TMenuItem
       Caption = 'Beenden'
@@ -3154,7 +3160,7 @@ object mjform: Tmjform
     Left = 328
     Top = 655
     Bitmap = {
-      494C01011800B800300210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011800B800340210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4084,5 +4090,14 @@ object mjform: Tmjform
       FEBF80030003DCF7FC9F80070003FF0FFDDF807F0003FFFFFDDF80FF8007FFFF
       FDDF81FFF87FFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object mjfontdialog: TFontDialog
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Left = 569
+    Top = 656
   end
 end
