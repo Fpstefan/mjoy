@@ -12,5 +12,5 @@ Subset of the Programming Language ***Joy*** with Turtle Graphics
 ---> [Get-It](https://www.heise.de/download/product/mjoy) ... (for Downloading Installer)
 
 
-Licence of all sourcecode in this Repo is now: (CC BY 3.0 DE) Fpstefan
+Licence of all sourcecode in this Repo is now: (CC BY 3.0) Fpstefan
 
