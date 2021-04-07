@@ -31,4 +31,4 @@ implementation
 end.
 
 
-// (CC BY 3.0 DE) Fpstefan
+// (CC BY 3.0) Fpstefan

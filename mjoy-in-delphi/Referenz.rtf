@@ -1,0 +1,186 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red247\green150\blue70;\red75\green172\blue198;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\lang7\b\f0\fs28 Referenz f\'fcr mjoy\cf0\b0\fs22\line\fs24 vom  2021-04-07\fs22\par
+\par
+\cf1\b\fs28 Definition von Bezeichnern\cf2\par
+\cf0\b0\i\fs24 bezeichner1\i0  \b ==\b0  \i wort1 wort2 wort3 ...\i0\line\i bezeichner2\i0  \b ==\b0  \i wort4 wort5 wort6 ...\line\par
+\i0 Beispiel eintippen:\par
+makelist (... num -- liste) == [] swap [cons] times\tab\tab      <Enter>\line 'anfang 10 20 30 40 50 5 makelist 'ende stack reverse print     <Enter>\line ... anfang [10 20 30 40 50] ende\i\par
+\cf2\b\i0\fs28\par
+\cf1 Befehle f\'fcr den Stack\cf0\b0\fs22\par
+\fs24 der Parameterstapel (stack) ist eine Liste\b\par
+stack\b0\tab\tab\tab --\tab\i liste\line\i0 Schiebt den Stapel als \i liste\i0  auf den Stapel.\i\par
+liste\i0  \b unstack\line\b0 die \i liste\i0  wird zum neuen Stapel.\par
+\b clear\line\b0 L\'f6scht den Stapel.\par
+\i xwert\i0  \b dup\b0\tab\tab --\tab\i xwert xwert\line\i0 Schiebt eine Extrakopie vom \i xwert\i0  auf den Stapel.\par
+\i wert\i0  \b pop\b0\tab\tab --\line Entfernt \i wert\i0  von der Spitze des Stapels.\par
+\i xwert ywert\i0  \b swap\b0\tab --\tab\i ywert xwert\line\i0 Vertauscht \i xwert\i0  und \i ywert\i0  an der Spitze des Stapels.\par
+\i x y\i0  \b over\b0\tab\tab --\tab\i x y x\par
+x y z\i0  \b rotate\b0\tab\tab --\tab\i z y x\line\i0 Vertauscht \i x\i0  und \i z\i0 .\par
+\i x y z\i0  \b rollup\b0\tab\tab --\tab\i z x y\par
+x y z\i0  \b rolldown\b0\tab\tab --\tab\i y z x\i0\par
+... \i num\i0  \b index\b0\tab\tab --\tab\i stackwert\line\i0 Pickt eine Kopie vom \i stackwert\i0  mit der Position \i num\i0  relativ zur Stapelspitze aus\line dem Stapel und schiebt ihn auf den Stapel;\line mit \i num \i0 = 1 -> erster Wert, \i num \i0 = 2 -> zweiter Wert, ...\par
+\i xwert [programm]\i0  \b dip\b0\tab --\tab ...  \i xwert\line\i0 Speichert den \i xwert\i0 , f\'fchrt das \i programm\i0  aus, schiebt \i xwert\i0  auf den Stapel zur\'fcck.\par
+\b id\b0\tab\tab\tab --\line Identit\'e4tsfunktion, macht gar nix; als Platzhalter f\'fcr eine Funktion.\par
+\b .s\b0\tab\tab\tab --\line Gibt den Inhalt des Stapels aus.\tab\tab (jetzt Monadenverhalten)\par
+\par
+\cf1\b\fs28 Befehle f\'fcr Ein/Ausgabe\cf0\b0\fs22\par
+\i\fs24 wert\i0   \b .\b0\tab\tab\tab\tab --\line Gibt den obersten \i wert\i0  vom Stapel aus.\tab (jetzt Monadenverhalten)\par
+\i liste\i0  \b print\b0\tab\tab\tab --\line Gibt die \i liste\i0  ohne eckige Klammern aus.\tab (jetzt Monadenverhalten)\par
+\i fname\i0  \b loadstring\b0\tab\tab --\tab\i string\i0\line L\'e4dt den Inhalt einer Textdatei und legt ihn als Charliste auf dem Stapel ab.\line\tab\tab\tab\tab\tab\tab (jetzt Monadenverhalten)\par
+\i fname\i0  \i string\i0  \b savestring\b0\tab --\line Speichert die Charliste (string) als Text in einer Textdatei ab.\line\tab\tab\tab\tab\tab\tab (jetzt Monadenverhalten)\par
+\i fname\i0  \b run\b0\tab\tab\tab --\line Startet die Datei \i fname\i0 .\tab\tab\tab (jetzt Monadenverhalten)\par
+\b dump\b0\tab\tab\tab\tab --\tab\tab (jetzt Monadenverhalten)\par
+\par
+\cf1\b\fs28 Befehle f\'fcr Listenverarbeitung\cf0\b0\fs22\par
+\b\fs24 [\b0\i wert1 wert2 wert3 ...\b\i0 ]\b0\i\par
+liste\i0  \b first\b0\tab\tab --\tab\i wert\line wert\i0  ist der erste Wert der nichtleeren \i liste\i0 .\par
+\i liste1\i0  \b rest\b0\tab\tab --\tab\i liste\line liste\i0  ist die Restliste der nichtleeren \i liste1\i0  ohne den ersten Wert.\par
+\i wert1 liste1\i0  \b cons\tab\b0 --\tab\i liste\line\i0 die \i liste\i0  entsteht aus der \i liste1\i0  mit neuem ersten \i wert1\i0 .\par
+\i liste1 wert1\i0  \b swons\b0\tab --\tab\i liste\line\i0 die \i liste\i0  entsteht aus der \i liste1\i0  mit neuem ersten \i wert1\i0 .\par
+\i liste1\i0  \b uncons\b0\tab\tab --\tab\i wert liste\line\i0 Legt den \i first\i0  und den \i rest\i0  der nichtleeren \i liste1\i0  auf den Stapel.\par
+\i liste1\i0  \b unswons\b0\tab --\tab\i liste wert\line\i0 Legt den \i rest\i0  und den \i first\i0  der nichtleeren \i liste1\i0  auf den Stapel.\par
+\i liste1\i0  \b reverse\b0\tab\tab --\tab\i liste\line\i0 Die Reihenfolge der Elemente der \i liste1\i0  wird umgekehrt zur neuen \i liste\i0 .\par
+\i liste\i0  \b size\b0\tab\tab --\tab\i num\line num\i0  ist die Anzahl der Elemente der \i liste\i0 .\par
+\i liste1 num\i0  \b take\b0\tab --\tab\i liste\line\i0 Eine \i liste\i0  mit den ersten \i num\i0  Elementen der \i liste1\i0 .\par
+\i liste1 num\i0  \b drop\b0\tab --\tab\i liste\line\i0 Eine kopierte \i liste\i0  ohne den ersten \i num\i0  Elementen der \i liste1\i0 .\par
+\i liste1 liste2\i0  \b concat\b0\tab --\tab\i liste\line\i0 Die \i liste\i0  ist die Verkettung der \i liste1\i0  und \i liste2\i0 .\par
+\i liste1 liste2\i0  \b swoncat\b0\tab --\tab\i liste\i0\par
+\i num\i0  \b iota\b0\tab\tab --\tab\i liste\line\i0 Generiert eine \i liste\i0  von Zahlen von 1 bis \i num\i0 .\par
+\i liste num\i0  \b at\b0\tab\tab --\tab\i element\sub num\line\nosupersub\i0 Pickt das \i element\sub\i0 num\nosupersub  aus der Liste.\par
+\i liste1 num wert\i0  \b set\b0\tab --\tab\i liste\par
+matrix1\i0  \b trans\b0\tab\tab --\tab\i matrix\par
+wert\i0  \b unit\b0\tab\tab --\tab [\i wert\i0 ]\par
+\i wert1 wert2\i0  \b pair\b0\tab --\tab\i [wert1 wert2]\par
+[wert1 wert2]\i0  \b unpair\b0\tab --\tab\i wert1 wert2\par
+\i0\par
+\cf1\b\fs28 Befehle f\'fcr das Verarbeiten von Dict-Listen\cf0\b0\fs22\par
+\b\fs24 [\b0\i key1 wert1 key2 wert2 ... ...\b\i0 ]\b0\i\par
+dict key\i0  \b dictget\b0\tab\tab --\tab\i wert\line dict key\i0  \b get\b0\tab\tab\tab --\tab\i wert\line\i0 Holt den \i wert\i0  zum \i key\i0  aus dem \i dict\i0  hervor.\par
+\i dict1 key wert\i0  \b dictput\b0\tab\tab --\tab\i dict\line dict1 key wert\i0  \b put\b0\tab\tab --\tab\i dict\line\i0 Legt einen neuen \i wert\i0  zum \i key\i0  in einem \i dict\i0  an mit \i dict1\i0  als Kopie.\i\par
+\i0\par
+\cf1\b\fs28 Mathematische Funktionen\cf0\b0\fs22\par
+\i\fs24 num1 num2\i0  \b +\b0\tab\tab --\tab\i num\line num\i0  ist das Ergebnis der Addition von \i num1\i0  und \i num2\i0 .\par
+\i num1 num2 \i0  \b -\b0\tab\tab --\tab\i num\line num\i0  ist das Ergebnis der Subtraktion \i num2\i0  von \i num1\i0 .\par
+\i num1 num2\i0  \b *\b0\tab\tab --\tab\i num\line num\i0  ist das Produkt von \i num1\i0  und \i num2\i0 .\par
+\i num1 num2\i0  \b /\b0\tab\tab --\tab\i num\line num\i0  ist der Quotient von \i num1\i0  dividiert durch \i num2\i0 .\par
+\i num1 num2\i0  \b pow\b0\tab --\tab\i num\i0\par
+\i num1\i0  \b pred\b0\tab\tab --\tab\i num\par
+num1\i0  \b succ\b0\tab\tab --\tab\i num\par
+num1\i0  \b sign\b0\tab\tab --\tab\i num\par
+num1\i0  \b abs\b0\tab\tab --\tab\i num\i0\par
+\i num1\i0  \b neg\b0\tab\tab --\tab\i num\line num\i0  ist der negative Wert von \i num1\i0 .\par
+\i num1\i0  \b int\tab\b0\tab --\tab\i num\line num\i0  ist der ganzzahlige Anteil von \i num1\i0 .\par
+\i num1\i0  \b round\b0\tab\tab --\tab\i num\i0\par
+\i num1 \b\i0 exp\b0\tab\tab --\tab\i num\i0\par
+\i num1\i0  \b log\b0\tab\tab --\tab\i num\par
+num1\i0  \b log10\b0\tab\tab --\tab\i num\par
+num1\i0  \b log2\b0\tab\tab --\tab\i num\i0\par
+\b pi\b0\tab\tab\tab --\tab 3.141592653589793\par
+\i radiwinkel\i0  \b sin\b0\tab\tab --\tab\i num\line num\i0  ist der Sinus vom \i winkel\i0  im Bogenma\'df.\par
+\i radiwinkel\i0  \b cos\b0\tab\tab --\tab\i num\line num\i0  ist der Cosinus vom \i winkel\i0  im Bogenma\'df.\par
+\i radiwinkel\i0  \b tan\b0\tab\tab --\tab\i num\par
+num1\i0  \b asin\b0\tab\tab --\tab\i radiwinkel\par
+num1\i0  \b acos\b0\tab\tab --\tab\i radiwinkel\par
+num1\i0  \b atan\b0\tab\tab --\tab\i radiwinkel\par
+numy numx\i0  \b atan2\b0\tab --\tab\i radiwinkel\par
+num1\i0  \b sinh\b0\tab\tab --\tab\i num\par
+num1\i0  \b cosh\b0\tab\tab --\tab\i num\par
+num1\i0  \b tanh\b0\tab\tab --\tab\i num\par
+num1\i0  \b sqrt\b0\tab\tab --\tab\i num\line num\i0  ist die Quadratwurzel von \i num1\i0 .\par
+\i [num1 num2 ... numn]\i0  \b sum\b0\tab\tab --\tab\i num\line\i0 Summe aller Elemente der Liste.\i\par
+\i0\par
+\cf1\b\fs28 Logische Funktionen\cf0\b0\fs22\par
+\b\fs24 true\b0\tab\tab\tab --\tab\i true\line\i0 Schiebt den Wert true auf den Stapel.\par
+\b false\b0\tab\tab\tab --\tab\i false\line\i0 Schiebt den Wert false auf den Stapel.\par
+\i bool\i0  \b not\b0\tab\tab --\tab\i bool\line\i0 Logische Negation f\'fcr Wahrheitswerte.\par
+\i bool1 bool2\i0  \b and\b0\tab --\tab\i bool\line\i0 Logische Konjunktion f\'fcr Wahrheitswerte.\par
+\i bool1 bool2\i0  \b or\b0\tab\tab --\tab\i bool\line\i0 Logische Disjunktion f\'fcr Wahrheitswerte.\par
+\i bool1\i0  \i bool\i0 2 \b xor\b0\tab --\tab\i bool\i0\line Exklusiv-Oder-Verkn\'fcpfung f\'fcr Wahrheitswerte.\par
+\i wert1 wert2\i0    \b =\b0\tab\tab --\tab\i bool\line charliste1 charliste2  \i0  \b =\tab\b0 --\tab\i bool\line\i0 Pr\'fcft, ob \i wert1\i0  gleich \i wert2\i0  ist, und legt den Wahrheitswert auf den Stapel.\par
+\i wert1 wert2\i0  \b <>\b0\tab\i --\tab bool\par
+wert1 wert2\i0  \b !=\b0\tab --\tab bool\i\par
+wert1 wert2\i0   \b <\b0\tab\tab\tab --\tab\i bool\line charliste1 charliste2\i0   \b <\b0\tab --\tab\i bool\par
+wert1 wert2\i0   \b >\b0\tab\tab --\tab\i bool\par
+wert1 wert2\i0  \b <=\b0\tab --\tab\i bool\par
+wert1 wert2\i0  \b >=\b0\tab --\tab\i bool\i0\par
+\i wert\i0  \b null\b0\tab\tab --\tab\i bool\i0\par
+\i wert\i0  \b list\b0\tab\tab --\tab\i bool\par
+wert\i0  \b logical\b0\tab\tab --\tab\i bool\par
+wert\i0  \b consp\b0\tab\tab --\tab\i bool\par
+wert\i0  \b ident\b0\tab\tab --\tab\i bool\par
+wert\i0  \b float\b0\tab\tab --\tab\i bool\par
+wert\i0  \b char\b0\tab\tab --\tab\i bool\par
+wert\i0  \b undef\b0\tab\tab --\tab\i bool\par
+wert\i0  \b user\b0\tab\tab --\tab\i bool\par
+wert\i0  \b type 'null =\b0\tab --\tab\i bool\line wert\i0  \b type 'cons =\b0\tab --\tab\i bool\line wert\i0  \b type 'ident =\b0\tab --\tab\i bool\line wert\i0  \b type 'float =\b0\tab --\tab\i bool\line wert\i0  \b type 'char =\b0\tab --\tab\i bool\line wert\i0   \b 'undef   =\b0\tab --\tab\i bool\par
+wert liste\i0  \b in\b0\tab\tab --\tab\i bool\par
+\i0\par
+\cf1\b\fs28 Befehle f\'fcr die Ablaufsteuerung\cf0\b0\fs22\par
+\b\fs24 '\b0   \i bezeichner\i0\tab\tab\tab --\tab\i bezeichner\line\i0 Der \i bezeichner\i0 , der dem Quote folgt, wird auf den Stapel geschoben.\par
+\i bool [dann] [sonst]\i0  \b if\b0\tab\tab --\tab ...\line Wenn \i bool\i0  = true -> \i dann\i0  wird ausgef\'fchrt;\line wenn \i bool\i0  = false -> \i sonst\i0  wird ausgef\'fchrt.\par
+\i bool [dann] [sonst]\i0  \b branch\b0\tab --\tab ...\tab *wie \b if\b0\par
+\i bool wert1 wert2\i0  \b choice\b0\tab --\tab\i wert\b\i0\par
+\b0\i werti [[wert1 rest1...] [wert2 rest2...] ... [wertn restn...]]\i0  \b select\b0\tab --\tab\i [resti...]\par
+[[bool1 rest1...] [bool2 rest2...] ... [true restn...]] \b\i0 cond\b0\tab --\tab\i ...\i0\par
+\i num [programm]\i0  \b times\tab\b0 --\tab ...\line\i num\i0 -mal wird das \i programm\i0  ausgef\'fchrt.\par
+\i [test] [programm]\i0  \b while\b0\tab --\tab ...\line Wiederholt, wenn das Ausf\'fchren von \i test\i0  den Wert true ergibt wird\line das \i programm\i0  ausgef\'fchrt.\par
+\i [programm]\i0  \b i\b0\tab\tab\tab --\tab ...\line F\'fchrt das \i programm\i0  aus.\par
+\i [programm]\i0  \b try\tab\tab\b0 --\tab ...  \i [hinweis]\line\i0 F\'fchrt das \i programm\i0  aus und schiebt einen (m\'f6glicherweise leeren) \i hinweis\i0  auf\line eine Exception auf den Stapel.\par
+\i liste [programm]\i0  \b step\b0\tab\tab --\tab ...\par
+\i liste1 [programm]\i0  \b map\b0\tab --\tab\i liste\i0\par
+\i liste zero [programm]\i0  \b fold\b0\tab --\tab\i querresultat\par
+liste1 [pr\'e4dikat]\i0  \b filter\b0\tab\tab --\tab\i liste\par
+num [programm]\i0  \b '!\b0\tab\tab --\tab ...\i\line [monade] [programm]\i0  \b '!\b0\tab --\tab ...\tab\tab (Monadenverhalten)\line Erst wird die primitive Monade \i num\i0  oder die \i [monade]\i0  ausgef\'fchrt -\line also ein Seiteneffekt geschied. Dannach wird das \i [programm]\i0  ausgef\'fchrt.\line Die Monade steht am Ende einer Sequenz/eines Programms.\par
+\par
+\cf1\b\fs28 Misc Befehle\cf0\b0\fs22\par
+\i\fs24 wert\i0  \b type\b0\tab --\tab\i datentypbezeichner\i0\par
+\tab\tab\tab null\tab\tab\tab\tab [ ]\line\tab\tab\tab cons\tab\tab\tab\tab [x y z ...]\line\tab\tab\tab ident\tab\tab\tab\tab abc\line\tab\tab\tab integer\tab\tab *intern\tab\tab (123)\line\tab\tab\tab float\tab\tab\tab\tab -3.1415e-100\line\tab\tab\tab char\tab\tab\tab\tab "A"\line\tab\tab\tab string\tab\tab *intern\tab\tab ("abc")\par
+\i num1 num2 num3\i0  \b rgb\b0\tab --\tab\i num\line\i0 Berechnet den Rot-Gr\'fcn-Blau-Wert.\par
+\i zeichen1\i0  \b upper\b0\tab\tab --\tab\i zeichen\line zeichen\i0  ist der Ansiuppercase von \i zeichen1\i0 .\i\par
+zeichen1\i0  \b lower\b0\tab\tab --\tab\i zeichen\line zeichen\i0  ist der Ansilowercase von \i zeichen1\i0 .\par
+\i num\i0  \b chr\b0\tab --\tab\i zeichen\i0\par
+\i zeichen\i0  \b ord\b0\tab --\tab\i num\par
+wert1 wert2 \b\i0 min\b0\tab --\tab\i wert\par
+wert1 wert2\i0  \b max\b0\tab --\tab\i wert\par
+ident\i0  \b name\b0\tab --\tab\i charliste\par
+ident\i0  \b body\b0\tab --\tab\i num\i0\line\tab\tab --\tab\i liste\par
+wert\i0  \b addr\b0\tab --\tab\i num\line\i0 Zellenadresse vom Wert.\i\par
+charliste\i0  \b parse\b0\tab\tab --\tab\i liste\i0\line Wandelt die Stringdarstellung in eine \i liste\i0  von internen Darstellungen um.\par
+\i wert\i0  \b tostr\b0\tab\tab --\tab\i charliste\i0\line Wandelt den \i wert\i0  in eine Stringdarstellung um.\par
+\b gc\b0\tab\tab --\line Erzwingt eine Garbage Collection, die sonst nur spontan auftritt,\line wenn die Freelist ersch\'f6pft ist.\par
+\i wert\i0  \b out\b0\tab --\tab\tab\tab *Seiteneffekt\line M\'f6glichkeit, um Fehlern auf die Schliche zu kommen.\par
+\b quit\b0\tab\tab --\line Beendet den Interpreter.\par
+\b identlist\b0\tab --\tab\i liste\i0\line Liste mit den verwendeten Bezeichnern.\par
+\i wert\i0  \b error\b0\tab --\tab\tab\tab *\i exception\i0\par
+\par
+\cf1\b\fs28 Befehle f\'fcr Turtlegraphic\cf0\b0\fs22\par
+\fs24 die Turtle dreht sich im Bogenma\'df (Radiant); eine Umdrehung ist 2pi.\par
+\b 2pi\b0\tab\tab\tab --\tab 6.283185307179586\par
+\i degreewert\i0  \b rad\b0\tab --\tab\i radiantwert\line\i0 Grad-Wert wird in Radiant-Wert umgerechnet.\par
+\i radiantwert\i0  \b deg\b0\tab --\tab\i degreewert\line\i0 Radiant-Wert wird in Grad-Wert umgerechnet.\par
+\b offs\b0   ==  id\tab\tab\i oder\tab\i0\tab\b offs\b0   ==  rad\line f\'fcr Radiantwerte\tab\i oder\i0\tab\tab f\'fcr Degreewerte\line 90 rad turn\tab\tab\i oder\i0\tab\tab 90 turn\par
+\b init\b0\tab --\tab [stack [ ] x 0 y 0 angle 0 pen true color 0 size 1 brush 16777215]\line Initialisierung der Turtle. Die Turtle ist ein dict (Dict-Liste).\par
+\i dict\i0  \b draw\b0\tab\tab\tab --\tab\tab\tab (jetzt Monadenverhalten)\line Zeichnet die Spur der Turtle.\par
+\i dict xwert ywert\i0  \b moveto\b0\tab --\tab\i dict\line\i0 Bewegt die Turtle auf den (x,y)-Wert.\line Aufgepasst: die Bildschirmanzeige liegt im 4. Quadranten also (x,-y).\par
+\i dict relax relay\i0  \b moverel\b0\tab --\tab dict\line Relatives moveto.\par
+\i dict distwert\i0  \b move\b0\tab\tab --\tab\i dict\line\i0 Die Turtle wird um den \i distwert\i0  in die aktuelle Ausrichtung bewegt.\par
+\i dict winkel\i0  \b turnto\b0\tab\tab --\tab\i dict\line\i0 Legt die aktuelle Ausrichtung der Turtle fest.\par
+\i dict relawinkel\i0  \b turn\b0\tab\tab --\tab\i dict\line\i0 Ver\'e4ndert die aktuelle Ausrichtung der Turtle um den \i relawinkel\i0 .\par
+\i dict\i0  \b penup\b0\tab\tab\tab --\tab\i dict\line\i0 Hebt den Zeichenstift der Turtle -> es werden keine Linien gemalt.\par
+\i dict\i0  \b pendown\b0\tab\tab\tab --\tab\i dict\line\i0 Senkt den Zeichenstift der Turtle -> es kann wieder gemalt werden.\par
+\i dict num\i0  \b pencolor\b0\tab\tab --\tab\i dict\line\i0 Setzt die Zeichenstiftfarbe auf \i num\i0 .\par
+\i dict num\i0  \b pensize\b0\tab\tab --\tab\i dict\line\i0 Legt die Breite des Zeichenstiftes fest.\par
+\i dict num\i0  \b brushcolor\b0\tab\tab --\tab\i dict\line\i0 Legt die Farbe f\'fcr das Ausf\'fcllen von Fl\'e4chen fest.\par
+\i dict radius\i0  \b circle\b0\tab\tab --\tab\i dict\line\i0 Malt einen ausgef\'fcllten Kreis mit dem \i radius\i0  \'fcber den letzten Punkt.\par
+\i dict\i0  \b rectangle\b0\tab\tab\tab --\tab\i dict\line\i0 Malt ein ausgef\'fclltes Rechteck \'fcber die letzten zwei Punkte.\par
+\b colors\b0\tab\tab --\tab [red 255 black 0 blue 16711680 white 16777215 green 32768 aqua 16776960 darkgray 8421504 fuchsia 16711935 gray 8421504 lime 65280 lightgray 12632256 maroon 128 navy 8388608 olive 32896 purple 8388736 silver 12632256 teal 8421376 yellow 65535 gold 55295 orange 42495]\par
+\i liste\i0  \b showgraph\tab\b0\tab --\tab\tab\tab\tab *intern\line Die Spur, codiert als Paare in der \i liste\i0 , wird gezeichnet.\tab (jetzt Monadenverhalten)\par
+\b start\b0\tab\tab\tab\tab --\tab\i dict\i0\line Beginn mit einer Turtle in der Bildmitte.\par
+\i dict\i0\tab\b ;\b0\tab\tab\tab --\tab\i dict\tab\i0\tab\tab (jetzt Monadenverhalten)\line Kann f\'fcr Interaktives Zeichnen mit der Turtle genutz werden (zB:\tab 50 move \b ;\b0   ).\par
+\par
+\par
+\par
+(CC BY 3.0) Fpstefan\par
+}
+ 

@@ -191,7 +191,13 @@ object initForm: TinitForm
     Left = 24
     Top = 46
     Width = 297
-    Height = 21
+    Height = 23
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Fixedsys'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
     Text = 'cellEdit'
   end

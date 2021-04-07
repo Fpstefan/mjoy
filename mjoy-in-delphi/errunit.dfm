@@ -114,7 +114,7 @@ object errForm: TerrForm
       BorderStyle = bsNone
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Fixedsys'
       Font.Style = []
       ParentFont = False

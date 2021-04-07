@@ -128,9 +128,9 @@ const pixelinpopupmenu = 7;
       unloaddef = 'ungeladen';
       progfilenotfound = 'Programmdatei nicht gefunden.';
       guidefiledef = 'QuickStartGuide.pdf';//'http://mathscitech.org/papers/mjoy%20-%20drawing%20with%20mjoy%20-%20supplement.pdf';//'Dokumentation.rtf';
-      dochelpfiledef = 'Dokumentation.rtf';
-      refhelpfiledef = 'Referenz.rtf';
-      websitedef = 'https://fpstefan.github.io/mjoypro/';
+      dochelpfiledef = 'Dokumentation.pdf';
+      refhelpfiledef = 'Referenz.pdf';
+      websitedef = 'https://fpstefan.github.io/feedback/';//'https://fpstefan.github.io/mjoypro/';
       filenotfound = 'Datei existiert nicht.';
       noinifilename = 'Name für ini-Datei existiert nicht.';
       software='Software';
@@ -638,4 +638,4 @@ end;
 end.
 
 
-// (CC BY 3.0 DE) Fpstefan
+// (CC BY 3.0) Fpstefan
